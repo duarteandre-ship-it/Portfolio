@@ -59,7 +59,7 @@ export default function AboutModal({ onClose, onNameCycle }: AboutModalProps) {
         </p>
 
         <div className={styles.cvRow}>
-          <a href="/cv.pdf" className={styles.cvBtn} target="_blank" rel="noopener noreferrer">
+          <a href="/duarte-cv.pdf" className={styles.cvBtn} target="_blank" rel="noopener noreferrer">
             cv
           </a>
         </div>
