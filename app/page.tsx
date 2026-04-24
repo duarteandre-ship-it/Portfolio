@@ -44,12 +44,20 @@ export default function Home() {
             dudas23andre@gmail.com
           </a>
           <a
-            href="https://www.linkedin.com/in/duarte-andr%C3%A9-4ba832193/"
+            href="https://www.linkedin.com/in/duarte-andr%C3%A9-9a731b2a4/"
             className={styles.footerBtn}
             target="_blank"
             rel="noopener noreferrer"
           >
             linkedIn
+          </a>
+          <a
+            href="/duarte-cv.pdf"
+            className={styles.footerBtn}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV
           </a>
         </div>
         <p className={styles.tagline}>i wireframed this whole ordeal, and then vibecoded it!</p>
