@@ -440,14 +440,6 @@ export default function Onboarding() {
           >
             linkedIn
           </a>
-          <a
-            href="/duarte-cv.pdf"
-            className={styles.footerBtn}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CV
-          </a>
         </div>
         <p className={styles.tagline}>
           i wireframed this whole ordeal, and then vibecoded it!
