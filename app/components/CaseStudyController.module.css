@@ -1,0 +1,94 @@
+/* Fixed right-side chapter navigator */
+.controller {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+
+  background-color: var(--color-bg);
+  border: 3px solid var(--color-black);
+  padding: 20px;
+  width: 180px;
+
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Active-chapter asterisk indicator */
+.asterisk {
+  display: inline-block;
+  font-size: 1.35em;
+  line-height: 1;
+  vertical-align: middle;
+  position: relative;
+  top: -0.05em;
+}
+
+/* Main chapter button */
+.chapterBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'JetJaneMono', monospace;
+  font-size: var(--fs-footer);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+  text-align: left;
+  transition: opacity 0.15s;
+}
+
+.chapterBtn:hover {
+  opacity: 0.5;
+}
+
+/* Subsection list */
+.subList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 10px;
+}
+
+/* Subsection button */
+.subBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'JetJaneMono', monospace;
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+  text-align: left;
+  transition: opacity 0.15s;
+}
+
+.subBtn:hover {
+  opacity: 0.5;
+}
+
+/* Hide below 1280 px — at that width the right gutter
+   (viewport − 856px content − 60px padding) / 2 ≈ 182 px,
+   enough to fit the 180px controller + 24px margin.          */
+@media (max-width: 1279px) {
+  .controller {
+    display: none;
+  }
+}

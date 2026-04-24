@@ -1,0 +1,444 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 60px 30px 0;
+  min-height: 100vh;
+}
+
+/* ── Spacers ───────────────────────────────────────────── */
+.gapLg {
+  height: 90px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.gapMd {
+  height: 30px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Scroll targets: clear the sticky navbar (≈ 90px) ──── */
+:global(#the-problem),
+:global(#the-process),
+:global(#research),
+:global(#positioning),
+:global(#the-solution),
+:global(#conclusions) {
+  scroll-margin-top: 110px;
+}
+
+/* ── Text content column ───────────────────────────────── */
+/* Applied alongside other classes to cap text at 856 px */
+.textBlock {
+  width: 100%;
+  max-width: 856px;
+}
+
+/* ── Typography ────────────────────────────────────────── */
+.heading {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  font-style: normal;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+.body {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+.body p + p {
+  margin-top: 1em;
+}
+
+/* Bullet labels (• research / • positioning) */
+.bulletLabel {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+/* Numbered lists */
+.numberedList {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Underlined term in conclusions */
+.underlinedTerm {
+  text-decoration: underline;
+}
+
+/* ── Meta boxes ────────────────────────────────────────── */
+.meta {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.metaBox {
+  border: 3px solid var(--color-black);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.metaLabel {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+.metaValue {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+/* ── Image + Caption (side-by-side on desktop) ─────────── */
+.imgCap {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* Reversed: caption left, phone right */
+.imgCapFlip {
+  flex-direction: row-reverse;
+}
+
+/* Standard portrait phone frame */
+.phoneMockup {
+  border: 3px solid var(--color-black);
+  border-radius: 36px;
+  box-shadow: 0 4px 4px var(--color-shadow);
+  width: 272px;
+  min-width: 272px;
+  height: 600px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.phoneMockupImg {
+  position: absolute;
+  inset: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  object-fit: cover;
+}
+
+.phoneMockupVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+
+/* Caption column */
+.captionCol {
+  width: 419px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.captionWrap {
+  line-height: 1.4;
+  max-width: 419px;
+}
+
+/* Italic highlight caption (white-on-black, 24 px) */
+.caption {
+  font-size: var(--fs-highlight-sub);
+  font-weight: 400;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+/* ── Two phones side-by-side ───────────────────────────── */
+.phonePair {
+  display: flex;
+  gap: 27px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 856px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.phonePair::-webkit-scrollbar {
+  display: none;
+}
+
+.phonePair .phoneMockup {
+  scroll-snap-align: start;
+}
+
+/* ── How Might We ──────────────────────────────────────── */
+.hmwWrap {
+  line-height: 1.4;
+}
+
+.hmw {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  text-transform: uppercase;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+/* ── Other works ───────────────────────────────────────── */
+.otherWorks {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 856px;
+}
+
+.otherWorkItem {
+  flex: 1;
+  position: relative;
+}
+
+.otherWorkLink {
+  display: block;
+  transition: opacity 0.15s;
+}
+
+.otherWorkLink:hover {
+  opacity: 0.7;
+}
+
+.otherWorkImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0px 4px 4px var(--color-shadow));
+}
+
+/* Hover info card */
+.otherWorkCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  background-color: var(--color-bg);
+  border: 3px solid var(--color-black);
+  padding: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cardMeta {
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+  margin-bottom: 12px;
+}
+
+.cardTitleWrap {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.cardTitle {
+  font-size: var(--fs-highlight-sub);
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+.cardTags {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardTags li {
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 25px 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  height: 65px;
+}
+
+.footerBtn {
+  border: 3px solid var(--color-black);
+  box-shadow: 0 4px 4px var(--color-shadow);
+  padding: 0 15px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-footer);
+  font-weight: 700;
+  color: var(--color-black);
+  font-family: 'JetJaneMono', monospace;
+  transition: opacity 0.15s;
+}
+
+.footerBtn:hover {
+  opacity: 0.6;
+}
+
+.tagline {
+  font-size: var(--fs-footer);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+  text-align: center;
+}
+
+/* ── Tablet (≤1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer {
+    gap: 24px;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 20px;
+  }
+
+  .meta {
+    flex-direction: column;
+  }
+
+  .imgCap,
+  .imgCapFlip {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .captionCol {
+    width: 100%;
+  }
+
+  .otherWorks {
+    gap: 40px;
+  }
+}
+
+/* ── Phone (≤767px) ────────────────────────────────────── */
+@media (max-width: 767px) {
+  .main {
+    padding: 20px 30px 0;
+  }
+
+  .body {
+    font-size: var(--fs-body-mobile);
+  }
+
+  .metaLabel,
+  .metaValue {
+    font-size: var(--fs-body-mobile);
+  }
+
+  .bulletLabel {
+    font-size: var(--fs-body-mobile);
+  }
+
+  .numberedList {
+    font-size: var(--fs-body-mobile);
+  }
+
+  /* Horizontal scroll carousel — break out of parent padding so the
+     container is full-viewport-width, then re-add padding on the left
+     so the first phone sits with breathing room and the second peeks. */
+  .phonePair {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .otherWorks {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer {
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 20px;
+  }
+
+  .tagline {
+    text-align: left;
+  }
+}

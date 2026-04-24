@@ -1,66 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import AboutModal from './components/AboutModal';
+import FloatingProjects from './components/FloatingProjects';
+import styles from './page.module.css';
+import { useColorScheme } from './hooks/useColorScheme';
 
 export default function Home() {
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const { nameIndex, goNext, goPrev } = useColorScheme('Portfolio');
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className={styles.main}>
+      <Navbar
+        onAboutClick={() => setAboutOpen(true)}
+        nameIndex={nameIndex}
+        onPrev={goPrev}
+        onNext={goNext}
+      />
+
+      <div className={styles.spacer} />
+
+      <section className={styles.hero}>
+        <div className={styles.headline}>
+          <p><span className={styles.highlightSpan}>welcome.</span></p>
+          <p><span className={styles.highlightSpan}>this is the place where i share my work.</span></p>
+        </div>
+        <p className={styles.subtext}>
+          I try to be a UX/UI / interaction / product / digital product / multidisciplinary / cool designer. The results are floating down there somewhere.
+        </p>
+      </section>
+
+      <div className={styles.spacerSm} />
+
+      <FloatingProjects />
+
+      <div className={styles.spacer} />
+
+      <footer className={styles.footer}>
+        <div className={styles.footerLinks}>
+          <a href="mailto:dudas23andre@gmail.com" className={styles.footerBtn}>
+            dudas23andre@gmail.com
+          </a>
+          <a
+            href="https://www.linkedin.com/in/duarte-andr%C3%A9-4ba832193/"
+            className={styles.footerBtn}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            linkedIn
+          </a>
+        </div>
+        <p className={styles.tagline}>i wireframed this whole ordeal, and then vibecoded it!</p>
+      </footer>
+
+      {aboutOpen && (
+        <AboutModal
+          onClose={() => setAboutOpen(false)}
+          onNameCycle={goNext}
         />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      )}
+    </main>
   );
 }

@@ -1,0 +1,452 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 60px 30px 0;
+  min-height: 100vh;
+}
+
+/* ── Spacers ───────────────────────────────────────────── */
+.gapLg {
+  height: 90px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.gapMd {
+  height: 30px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Scroll targets: clear the sticky navbar ───────────── */
+:global(#the-problem),
+:global(#the-process),
+:global(#research),
+:global(#positioning),
+:global(#the-solution),
+:global(#conclusions) {
+  scroll-margin-top: 110px;
+}
+
+/* ── Text content column ───────────────────────────────── */
+.textBlock {
+  width: 100%;
+  max-width: 856px;
+}
+
+/* ── Typography ────────────────────────────────────────── */
+.heading {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  font-style: normal;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+.body {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+.body p + p {
+  margin-top: 1em;
+}
+
+/* Bullet labels */
+.bulletLabel {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+/* ── Meta boxes ────────────────────────────────────────── */
+.meta {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.metaBox {
+  border: 3px solid var(--color-black);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.metaLabel {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+.metaValue {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+/* ── Landscape image + caption stacked ─────────────────── */
+.imgStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Landscape screenshot frame */
+.landscapeFrame {
+  width: 100%;
+  max-width: 600px;
+  height: 298px;
+  border: 3px solid var(--color-black);
+  border-radius: 36px;
+  box-shadow: 0 4px 4px var(--color-shadow);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.landscapeImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Solution image gallery ────────────────────────────── */
+.solutionGallery {
+  width: 100%;
+  max-width: 600px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.solutionGallery::-webkit-scrollbar {
+  display: none;
+}
+
+.solutionGalleryTrack {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+
+.solutionFrame {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 600px;
+  height: 427px;
+  border: 3px solid var(--color-black);
+  border-radius: 36px;
+  box-shadow: 0 4px 4px var(--color-shadow);
+  overflow: hidden;
+}
+
+.solutionImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .solutionGallery .solutionGalleryTrack {
+    flex-direction: column;
+    width: 100%;
+  }
+  .solutionGallery .solutionFrame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1800 / 1281;
+    border-radius: 20px;
+  }
+}
+
+/* Affinity map — full content column width, natural proportions */
+.affinityImg {
+  display: block;
+  width: 600px;
+  max-width: 100%;
+  height: auto;
+  border: 3px solid var(--color-black);
+  border-radius: 36px;
+  box-shadow: 0 4px 4px var(--color-shadow);
+}
+
+/* Report image — full content width, no extra frame (image has its own) */
+.reportImg {
+  display: block;
+  width: 600px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Landscape video — framed, full height, centered */
+.landscapeVideo {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border: 3px solid var(--color-black);
+  border-radius: 36px;
+  box-shadow: 0 4px 4px var(--color-shadow);
+  align-self: center;
+}
+
+/* Caption column */
+.captionWrap {
+  line-height: 1.4;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Italic highlight caption (white-on-black) */
+.caption {
+  font-size: var(--fs-highlight-sub);
+  font-weight: 400;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+/* ── How Might We ──────────────────────────────────────── */
+.hmwWrap {
+  line-height: 1.4;
+}
+
+.hmw {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  text-transform: uppercase;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+/* ── Other works ───────────────────────────────────────── */
+.otherWorks {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 856px;
+}
+
+.otherWorkItem {
+  flex: 1;
+  position: relative;
+}
+
+.otherWorkLink {
+  display: block;
+  transition: opacity 0.15s;
+}
+
+.otherWorkLink:hover {
+  opacity: 0.7;
+}
+
+.otherWorkImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0px 4px 4px var(--color-shadow));
+}
+
+/* Hover info card */
+.otherWorkCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  background-color: var(--color-bg);
+  border: 3px solid var(--color-black);
+  padding: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cardMeta {
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+  margin-bottom: 12px;
+}
+
+.cardTitleWrap {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.cardTitle {
+  font-size: var(--fs-highlight-sub);
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+.cardTags {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardTags li {
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 25px 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  height: 65px;
+}
+
+.footerBtn {
+  border: 3px solid var(--color-black);
+  box-shadow: 0 4px 4px var(--color-shadow);
+  padding: 0 15px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-footer);
+  font-weight: 700;
+  color: var(--color-black);
+  font-family: 'JetJaneMono', monospace;
+  transition: opacity 0.15s;
+}
+
+.footerBtn:hover {
+  opacity: 0.6;
+}
+
+.tagline {
+  font-size: var(--fs-footer);
+  font-weight: 700;
+  line-height: var(--lh);
+  color: var(--color-black);
+  text-align: center;
+}
+
+/* ── Tablet (≤1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .meta {
+    flex-direction: column;
+  }
+
+  .otherWorks {
+    gap: 40px;
+  }
+
+  .footer {
+    gap: 24px;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 20px;
+  }
+}
+
+/* ── Phone (≤767px) ────────────────────────────────────── */
+@media (max-width: 767px) {
+  .main {
+    padding: 20px 30px 0;
+  }
+
+  .body {
+    font-size: var(--fs-body-mobile);
+  }
+
+  .metaLabel,
+  .metaValue {
+    font-size: var(--fs-body-mobile);
+  }
+
+  .bulletLabel {
+    font-size: var(--fs-body-mobile);
+  }
+
+  .landscapeFrame {
+    max-width: 100%;
+    height: 180px;
+    border-radius: 20px;
+  }
+
+  .otherWorks {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer {
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 20px;
+  }
+
+  .tagline {
+    text-align: left;
+  }
+}

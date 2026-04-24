@@ -1,0 +1,112 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: visible;
+}
+
+.project {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.projectLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.projectLink img {
+  object-fit: contain;
+  filter: drop-shadow(0px 4px 4px var(--color-shadow));
+}
+
+.hoverCard {
+  position: absolute;
+  width: 320px;
+  background-color: var(--color-bg);
+  border: 3px solid var(--color-black);
+  box-shadow: 0 4px 4px var(--color-shadow);
+  padding: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cardMeta {
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+  margin-bottom: 12px;
+}
+
+.cardTitleWrap {
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.cardTitle {
+  font-size: var(--fs-highlight-sub);
+  font-weight: 700;
+  font-style: italic;
+  line-height: var(--lh);
+  color: var(--color-bg);
+  background-color: var(--color-black);
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 2px 4px;
+}
+
+.cardTags {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardTags li {
+  font-size: var(--fs-footer);
+  font-weight: 400;
+  line-height: var(--lh);
+  color: var(--color-black);
+}
+
+/* tablet + phone: static layout, no hover */
+@media (max-width: 1024px) {
+  .container {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    overflow: visible;
+  }
+
+  .project {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .projectLink {
+    position: relative;
+    height: 220px;
+  }
+
+  .hoverCard {
+    display: none;
+  }
+}
+
+/* phone only: single column */
+@media (max-width: 767px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

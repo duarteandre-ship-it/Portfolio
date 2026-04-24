@@ -1,0 +1,102 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 3px solid var(--color-black);
+  padding: 25px 59px;
+  box-shadow: 0 4px 4px var(--color-shadow);
+  background-color: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brandName {
+  font-size: var(--fs-navbar);
+  font-weight: 700;
+  font-style: normal;
+  line-height: var(--lh);
+  color: var(--color-black);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.brandName:hover {
+  opacity: 0.6;
+}
+
+.asteriskBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
+  transition: opacity 0.15s;
+}
+
+.asteriskBtn:hover {
+  opacity: 0.6;
+}
+
+@keyframes spinOnce {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spinOnce 0.4s ease-in-out;
+}
+
+.wink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 104px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.wink:hover {
+  opacity: 0.6;
+}
+
+.winkCircle,
+.winkChevron,
+.winkBracket {
+  display: block;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+
+  .brandName {
+    font-size: var(--fs-navbar-mobile);
+  }
+
+  .asteriskBtn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .wink {
+    transform: scale(0.7);
+    transform-origin: right center;
+  }
+}
