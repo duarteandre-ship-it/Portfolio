@@ -61,12 +61,24 @@ export default function Navbar({ onAboutClick, nameIndex, onPrev, onNext }: Navb
   const [winkFlipped, setWinkFlipped] = useState(false);
   const [spinLeft, setSpinLeft] = useState(false);
   const [spinRight, setSpinRight] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setWinkFlipped(f => !f);
     }, 1000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setHidden(y > lastY && y > 80);
+      lastY = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const handlePrev = () => {
@@ -80,7 +92,7 @@ export default function Navbar({ onAboutClick, nameIndex, onPrev, onNext }: Navb
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar}${hidden ? ` ${styles.navbarHidden}` : ''}`}>
       <div className={styles.brand}>
         <button
           className={`${styles.asteriskBtn}${spinLeft ? ` ${styles.spinning}` : ''}`}

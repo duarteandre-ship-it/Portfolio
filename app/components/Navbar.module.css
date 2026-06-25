@@ -10,7 +10,11 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.navbarHidden {
+  transform: translateY(-110%);
 }
 
 .brand {
