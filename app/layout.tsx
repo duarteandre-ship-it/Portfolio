@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Portfolio of Duarte André, a UX/UI and interaction designer from Faro, Portugal, currently based in Tallinn pursuing an MA in Interaction Design at the Estonian Academy of Arts.',
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: '/' },
+  verification: { google: 'mMLXdyQ9JTPmy0CHOY_8SYxqfEHUH7IEZnxuU7e7ku0' },
   openGraph: {
     type: 'website',
     url: SITE_URL,
