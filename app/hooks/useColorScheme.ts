@@ -26,13 +26,12 @@ export function useColorScheme(titleSuffix = 'Portfolio') {
 
       const svg = `<svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="21" height="21" fill="${s.bg}"/><path d="M20.8687 7.48125L18.2437 3.01875L13.125 5.90625V0H7.875V5.90625L2.625 3.01875L0 7.48125L5.11875 10.5L0 13.5188L2.625 17.9812L7.875 15.0938V21H13.125V15.0938L18.2437 17.9812L20.8687 13.5188L15.6187 10.5L20.8687 7.48125Z" fill="${s.ink}"/></svg>`;
       const url = `data:image/svg+xml,${encodeURIComponent(svg)}`;
-      let link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
-      }
+      document.querySelectorAll('link[rel~="icon"]').forEach(el => el.remove());
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/svg+xml';
       link.href = url;
+      document.head.appendChild(link);
     },
     [titleSuffix],
   );
