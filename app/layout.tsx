@@ -2,14 +2,52 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 
+const SITE_URL = 'https://duarte-a-c-g-a.com';
+
 export const metadata: Metadata = {
-  title: 'Duarte — Portfolio',
-  description: 'UX/UI / interaction / product / digital product / multidisciplinary / cool designer.',
+  title: 'Duarte André — Designer',
+  description: 'Portfolio of Duarte André, a UX/UI and interaction designer from Faro, Portugal, currently based in Tallinn pursuing an MA in Interaction Design at the Estonian Academy of Arts.',
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+    siteName: 'Duarte André — Designer',
+    title: 'Duarte André — Designer',
+    description: 'Portfolio of Duarte André, a UX/UI and interaction designer from Faro, Portugal, currently based in Tallinn pursuing an MA in Interaction Design at the Estonian Academy of Arts.',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Duarte André — Designer',
+    description: 'Portfolio of Duarte André, a UX/UI and interaction designer from Faro, Portugal, currently based in Tallinn.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Duarte André',
+  alternateName: ['Duarte Andre', 'duarte.andré'],
+  url: SITE_URL,
+  email: 'dudas23andre@gmail.com',
+  jobTitle: 'UX/UI & Interaction Designer',
+  description: 'Designer from Faro, Portugal, pursuing an MA in Interaction Design at the Estonian Academy of Arts in Tallinn.',
+  sameAs: [
+    'https://www.linkedin.com/in/duarte-andr%C3%A9-9a731b2a4/',
+    'https://www.behance.net/',
+  ],
+  knowsAbout: ['UX Design', 'UI Design', 'Interaction Design', 'Product Design', 'Service Design', 'Design Thinking'],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         {/* Runs before hydration — applies stored color scheme so colors are
             correct from the very first paint with no flash. */}
