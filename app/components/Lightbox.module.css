@@ -53,3 +53,25 @@
   display: block;
   border-radius: 8px;
 }
+
+.resetBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px 14px;
+  cursor: pointer;
+  z-index: 201;
+  border-radius: 20px;
+  transition: background 0.15s;
+  backdrop-filter: blur(4px);
+}
+
+.resetBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
