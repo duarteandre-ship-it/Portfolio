@@ -378,7 +378,7 @@ export default function Onboarding() {
         <p>
           You can also find this project in detail on my{' '}
           <a
-            href="https://www.behance.net/"
+            href="https://www.behance.net/duarteamaral1"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.underlinedTerm}

@@ -36,7 +36,7 @@ const jsonLd = {
   description: 'Designer from Faro, Portugal, pursuing an MA in Interaction Design at the Estonian Academy of Arts in Tallinn.',
   sameAs: [
     'https://www.linkedin.com/in/duarte-andr%C3%A9-9a731b2a4/',
-    'https://www.behance.net/',
+    'https://www.behance.net/duarteamaral1',
   ],
   knowsAbout: ['UX Design', 'UI Design', 'Interaction Design', 'Product Design', 'Service Design', 'Design Thinking'],
 };
