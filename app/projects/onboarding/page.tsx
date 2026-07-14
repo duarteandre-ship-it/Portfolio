@@ -5,7 +5,9 @@ import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import AboutModal from '../../components/AboutModal';
 import CaseStudyController from '../../components/CaseStudyController';
+import Lightbox from '../../components/Lightbox';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useLightbox } from '../../hooks/useLightbox';
 import styles from './page.module.css';
 
 function useDragScroll() {
@@ -67,6 +69,7 @@ export default function Onboarding() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [hoveredWork, setHoveredWork] = useState<string | null>(null);
   const { nameIndex, goNext, goPrev } = useColorScheme('onboarding');
+  const { open, close, item } = useLightbox();
   const gallery = useDragScroll();
   const phones = useDragScroll();
 
@@ -138,6 +141,8 @@ export default function Onboarding() {
             src="/images/3minutes.png"
             alt="3 minutes service interface"
             className={styles.landscapeImg}
+            onClick={() => open({ src: '/images/3minutes.png', type: 'image', alt: '3 minutes service interface' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
         <p className={styles.captionWrap}>
@@ -253,13 +258,13 @@ export default function Onboarding() {
       >
         <div className={styles.galleryTrack}>
           <div className={styles.galleryFrame}>
-            <img src="/images/Energia galp.png" alt="CONNECT energy overview" className={styles.galleryImg} />
+            <img src="/images/Energia galp.png" alt="CONNECT energy overview" className={styles.galleryImg} onClick={() => open({ src: '/images/Energia galp.png', type: 'image', alt: 'CONNECT energy overview' })} style={{ cursor: 'zoom-in' }} />
           </div>
           <div className={styles.galleryFrame}>
-            <img src="/images/Faturação.png" alt="CONNECT billing screen" className={styles.galleryImg} />
+            <img src="/images/Faturação.png" alt="CONNECT billing screen" className={styles.galleryImg} onClick={() => open({ src: '/images/Faturação.png', type: 'image', alt: 'CONNECT billing screen' })} style={{ cursor: 'zoom-in' }} />
           </div>
           <div className={styles.galleryFrame}>
-            <img src="/images/Resumo.png" alt="CONNECT summary screen" className={styles.galleryImg} />
+            <img src="/images/Resumo.png" alt="CONNECT summary screen" className={styles.galleryImg} onClick={() => open({ src: '/images/Resumo.png', type: 'image', alt: 'CONNECT summary screen' })} style={{ cursor: 'zoom-in' }} />
           </div>
         </div>
       </div>
@@ -297,6 +302,8 @@ export default function Onboarding() {
           muted
           playsInline
           className={styles.simulatorVideo}
+          onClick={() => open({ src: '/videos/app_flow.mp4', type: 'video' })}
+          style={{ cursor: 'zoom-in' }}
         />
         <div className={styles.captionCol}>
           <p className={styles.captionWrap}>
@@ -340,6 +347,8 @@ export default function Onboarding() {
             src="/images/mundogalp - 1.png"
             alt="Mundo Galp loyalty screen 1"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/mundogalp - 1.png', type: 'image', alt: 'Mundo Galp loyalty screen 1' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
         <div className={styles.phoneMockup}>
@@ -347,6 +356,8 @@ export default function Onboarding() {
             src="/images/mundogalp - 2.png"
             alt="Mundo Galp loyalty screen 2"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/mundogalp - 2.png', type: 'image', alt: 'Mundo Galp loyalty screen 2' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
         <div className={styles.phoneMockup}>
@@ -354,6 +365,8 @@ export default function Onboarding() {
             src="/images/mundogalp - 3.png"
             alt="Mundo Galp loyalty screen 3"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/mundogalp - 3.png', type: 'image', alt: 'Mundo Galp loyalty screen 3' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
       </div>
@@ -453,6 +466,7 @@ export default function Onboarding() {
           onNameCycle={goNext}
         />
       )}
+      <Lightbox item={item} onClose={close} />
     </main>
   );
 }

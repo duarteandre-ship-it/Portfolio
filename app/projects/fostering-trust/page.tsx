@@ -5,7 +5,9 @@ import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import AboutModal from '../../components/AboutModal';
 import CaseStudyController from '../../components/CaseStudyController';
+import Lightbox from '../../components/Lightbox';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useLightbox } from '../../hooks/useLightbox';
 import styles from './page.module.css';
 
 function useDragScroll() {
@@ -59,6 +61,7 @@ export default function FosteringTrust() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [hoveredWork, setHoveredWork] = useState<string | null>(null);
   const { nameIndex, goNext, goPrev } = useColorScheme('fostering trust');
+  const { open, close, item } = useLightbox();
   const pair = useDragScroll();
 
   return (
@@ -130,6 +133,8 @@ export default function FosteringTrust() {
             muted
             playsInline
             className={styles.phoneMockupVideo}
+            onClick={() => open({ src: '/videos/app_flow2.mp4', type: 'video' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
         <div className={styles.captionCol}>
@@ -226,6 +231,8 @@ export default function FosteringTrust() {
             src="/images/fostering-trust/onboarding.gif"
             alt="Onboarding screen"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/fostering-trust/onboarding.gif', type: 'image', alt: 'Onboarding screen' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
         <div className={styles.captionCol}>
@@ -267,6 +274,8 @@ export default function FosteringTrust() {
             src="/images/fostering-trust/profile-1.png"
             alt="My Profile — before"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/fostering-trust/profile-1.png', type: 'image', alt: 'My Profile — before' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
         <div className={styles.phoneMockup}>
@@ -274,6 +283,8 @@ export default function FosteringTrust() {
             src="/images/fostering-trust/profile-2.png"
             alt="My Profile — after"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/fostering-trust/profile-2.png', type: 'image', alt: 'My Profile — after' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
       </div>
@@ -326,6 +337,8 @@ export default function FosteringTrust() {
             src="/images/fostering-trust/tickets.png"
             alt="Ticket with partner discount"
             className={styles.phoneMockupImg}
+            onClick={() => open({ src: '/images/fostering-trust/tickets.png', type: 'image', alt: 'Ticket with partner discount' })}
+            style={{ cursor: 'zoom-in' }}
           />
         </div>
       </div>
@@ -348,6 +361,8 @@ export default function FosteringTrust() {
           src="/images/fostering-trust/purchasing.png"
           alt="Purchasing journey with RFlex price"
           className={styles.phoneMockupImg}
+          onClick={() => open({ src: '/images/fostering-trust/purchasing.png', type: 'image', alt: 'Purchasing journey with RFlex price' })}
+          style={{ cursor: 'zoom-in' }}
         />
       </div>
 
@@ -454,6 +469,7 @@ export default function FosteringTrust() {
           onNameCycle={goNext}
         />
       )}
+      <Lightbox item={item} onClose={close} />
     </main>
   );
 }

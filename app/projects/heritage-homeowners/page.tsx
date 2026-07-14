@@ -29,7 +29,9 @@ import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import AboutModal from '../../components/AboutModal';
 import CaseStudyController from '../../components/CaseStudyController';
+import Lightbox from '../../components/Lightbox';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useLightbox } from '../../hooks/useLightbox';
 import styles from './page.module.css';
 
 const OTHER_WORKS = [
@@ -60,6 +62,7 @@ export default function HeritageHomeowners() {
   const solutionGallery = useDragScroll();
   const [hoveredWork, setHoveredWork] = useState<string | null>(null);
   const { nameIndex, goNext, goPrev } = useColorScheme('heritage homeowners');
+  const { open, close, item } = useLightbox();
 
   return (
     <main className={styles.main}>
@@ -133,6 +136,8 @@ export default function HeritageHomeowners() {
         src="/images/heritage-affinity.png"
         alt="Research affinity map"
         className={styles.affinityImg}
+        onClick={() => open({ src: '/images/heritage-affinity.png', type: 'image', alt: 'Research affinity map' })}
+        style={{ cursor: 'zoom-in' }}
       />
 
       <div className={styles.gapLg} />
@@ -247,6 +252,8 @@ export default function HeritageHomeowners() {
           muted
           playsInline
           className={styles.landscapeVideo}
+          onClick={() => open({ src: '/videos/app_flow3.mp4', type: 'video' })}
+          style={{ cursor: 'zoom-in' }}
         />
         <p className={styles.captionWrap}>
           <span className={styles.caption}>
@@ -280,10 +287,10 @@ export default function HeritageHomeowners() {
       <div className={styles.solutionGallery} ref={solutionGallery.ref} onMouseDown={solutionGallery.onMouseDown} onMouseUp={solutionGallery.onMouseUp} onMouseLeave={solutionGallery.onMouseLeave} onMouseMove={solutionGallery.onMouseMove}>
         <div className={styles.solutionGalleryTrack}>
           <div className={styles.solutionFrame}>
-            <img src="/images/heritage-home-landing.png" alt="Heritage Home Check landing" className={styles.solutionImg} />
+            <img src="/images/heritage-home-landing.png" alt="Heritage Home Check landing" className={styles.solutionImg} onClick={() => open({ src: '/images/heritage-home-landing.png', type: 'image', alt: 'Heritage Home Check landing' })} style={{ cursor: 'zoom-in' }} />
           </div>
           <div className={styles.solutionFrame}>
-            <img src="/images/heritage-question.png" alt="Heritage Home Check questionnaire" className={styles.solutionImg} />
+            <img src="/images/heritage-question.png" alt="Heritage Home Check questionnaire" className={styles.solutionImg} onClick={() => open({ src: '/images/heritage-question.png', type: 'image', alt: 'Heritage Home Check questionnaire' })} style={{ cursor: 'zoom-in' }} />
           </div>
         </div>
       </div>
@@ -310,6 +317,8 @@ export default function HeritageHomeowners() {
         src="/images/Final Result.png"
         alt="Heritage renovation report mockup"
         className={styles.reportImg}
+        onClick={() => open({ src: '/images/Final Result.png', type: 'image', alt: 'Heritage renovation report mockup' })}
+        style={{ cursor: 'zoom-in' }}
       />
 
       <div className={styles.gapLg} />
@@ -399,6 +408,7 @@ export default function HeritageHomeowners() {
           onNameCycle={goNext}
         />
       )}
+      <Lightbox item={item} onClose={close} />
     </main>
   );
 }
